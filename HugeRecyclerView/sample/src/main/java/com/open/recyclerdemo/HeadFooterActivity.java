@@ -33,7 +33,7 @@ public class HeadFooterActivity extends BaseActivity implements ISampleListener 
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_head_rooter);
+        setContentView(R.layout.activity_head_footer);
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager lm = new LinearLayoutManager(this);
@@ -43,6 +43,8 @@ public class HeadFooterActivity extends BaseActivity implements ISampleListener 
 
         // add header and foot for RecyclerView
         mAdapter.addHeaderView(getLayoutInflater().inflate(R.layout.recycler_header, mRecyclerView, false));
+        mAdapter.addHeaderView(getLayoutInflater().inflate(R.layout.recycler_header, mRecyclerView, false));
+        mAdapter.addFooterView(getLayoutInflater().inflate(R.layout.recycler_footer, mRecyclerView, false));
         mAdapter.addFooterView(getLayoutInflater().inflate(R.layout.recycler_footer, mRecyclerView, false));
 
         mHint = (TextView) findViewById(R.id.tv_hint);
