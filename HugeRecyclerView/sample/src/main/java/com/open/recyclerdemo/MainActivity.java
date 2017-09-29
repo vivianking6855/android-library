@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(SimpleRecyclerActivity.class);
                 break;
             case R.id.tv_header_footer:
-                startActivity(HeadFooterActivity.class);
+                startActivity(HeaderFooterActivity.class);
                 break;
             default:
                 break;

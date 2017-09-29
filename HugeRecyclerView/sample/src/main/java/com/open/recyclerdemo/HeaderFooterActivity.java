@@ -14,7 +14,7 @@ import java.util.List;
 
 import listener.ISampleListener;
 
-public class HeadFooterActivity extends BaseActivity implements ISampleListener {
+public class HeaderFooterActivity extends BaseActivity implements ISampleListener {
     private SamplePresenter mPresenter;
     private TextView mHint;
 
