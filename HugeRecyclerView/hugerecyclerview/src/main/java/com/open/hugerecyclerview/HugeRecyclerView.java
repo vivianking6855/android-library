@@ -2,16 +2,8 @@ package com.open.hugerecyclerview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.view.View;
-
-import static java.security.AccessController.getContext;
 
 /**
  * huge recycler view control
@@ -45,7 +37,7 @@ public class HugeRecyclerView extends RecyclerView {
 //        mExampleDimension = a.getDimension(
 //                R.styleable.HugeRecyclerView_exampleDimension,
 //                mExampleDimension);
-//
+
 //        if (a.hasValue(R.styleable.HugeRecyclerView_exampleDrawable)) {
 //            mExampleDrawable = a.getDrawable(
 //                    R.styleable.HugeRecyclerView_exampleDrawable);

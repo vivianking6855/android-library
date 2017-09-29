@@ -77,12 +77,12 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
         return getBasicItemCount() + mHeaderSize + mFooterSize;
     }
 
-    private int getBasicItemCount() {
-        return mItemList == null ? 0 : mItemList.size();
-    }
-
     private boolean isContentView(int position) {
         return position >= mHeaderSize && position < (getBasicItemCount() + mHeaderSize);
+    }
+
+    private int getBasicItemCount() {
+        return mItemList == null ? 0 : mItemList.size();
     }
 
     public void addHeaderView(View view) {

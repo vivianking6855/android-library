@@ -6,15 +6,15 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.open.recyclerdemo.adapter.SampleRecyclerAdapter;
+import com.open.recyclerdemo.base.BaseActivity;
 import com.open.recyclerdemo.model.SampleModel;
 import com.open.recyclerdemo.presenter.SamplePresenter;
 
 import java.util.List;
 
-import com.open.recyclerdemo.base.BaseActivity;
 import listener.ISampleListener;
 
-public class SimpleRecyclerListActivity extends BaseActivity implements ISampleListener {
+public class HeadFooterActivity extends BaseActivity implements ISampleListener {
     private SamplePresenter mPresenter;
     private TextView mHint;
 
@@ -33,13 +33,17 @@ public class SimpleRecyclerListActivity extends BaseActivity implements ISampleL
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_head_rooter);
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager lm = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(lm);
         mAdapter = new SampleRecyclerAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
+
+        // add header and foot for RecyclerView
+        mAdapter.addHeaderView(getLayoutInflater().inflate(R.layout.recycler_header, mRecyclerView, false));
+        mAdapter.addFooterView(getLayoutInflater().inflate(R.layout.recycler_footer, mRecyclerView, false));
 
         mHint = (TextView) findViewById(R.id.tv_hint);
     }
