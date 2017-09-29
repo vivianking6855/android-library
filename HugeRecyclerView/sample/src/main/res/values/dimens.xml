@@ -1,0 +1,10 @@
+<resources>
+    <!-- recycler view item-->
+    <dimen name="recycler_item_first_h">50dp</dimen>
+
+    <!-- Text -->
+    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+
+</resources>

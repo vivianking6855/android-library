@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HugeRecycler</string>
+
+    <!-- load status -->
+    <string name="load_start">load start</string>
+    <string name="load_success">load success</string>
+    <string name="load_fail">load fail</string>
+
+</resources>
