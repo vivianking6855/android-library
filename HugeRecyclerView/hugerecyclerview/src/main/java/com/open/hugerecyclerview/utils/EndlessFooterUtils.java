@@ -62,8 +62,9 @@ public class EndlessFooterUtils {
      * @param recyclerView the recycler view
      * @param pageSize     the page size
      */
-    public void setError(Context context, RecyclerView recyclerView, int pageSize) {
-        setFooterViewState(context, recyclerView, pageSize, BaseEndlessFooterView.State.Error, null);
+    public void setError(Context context, RecyclerView recyclerView, int pageSize,
+                         View.OnClickListener errorListener) {
+        setFooterViewState(context, recyclerView, pageSize, BaseEndlessFooterView.State.Error, errorListener);
     }
 
     /**
@@ -76,7 +77,7 @@ public class EndlessFooterUtils {
      * @param errorListener the error listener
      */
     private void setFooterViewState(Context context, RecyclerView recyclerView, int pageSize,
-                                           BaseEndlessFooterView.State state, View.OnClickListener errorListener) {
+                                    BaseEndlessFooterView.State state, View.OnClickListener errorListener) {
         if (mView == null) {
             Log.e(TAG, "you must set footer view before you use");
             throw new InvalidParameterException("you must call setFooterView to set footer view before you use");
@@ -100,6 +101,8 @@ public class EndlessFooterUtils {
 
         // set state
         mView.setState(state);
+
+        // set error listener, if necessary
         if (state == BaseEndlessFooterView.State.Error && errorListener != null) {
             mView.setOnClickListener(errorListener);
         }

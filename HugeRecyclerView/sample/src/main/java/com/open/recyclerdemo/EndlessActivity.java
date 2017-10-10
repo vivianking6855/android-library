@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.open.hugerecyclerview.listener.HugeRecyclerOnScrollListener;
@@ -117,9 +118,16 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
         mFooterUtil.setNormal(EndlessActivity.this, mRecyclerView, PAGE_SIZE);
     }
 
+    private View.OnClickListener mFooterClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            refreshData();
+        }
+    };
+
     @Override
     public void OnRefreshFail(String error) {
-        mFooterUtil.setError(EndlessActivity.this, mRecyclerView, PAGE_SIZE);
+        mFooterUtil.setError(EndlessActivity.this, mRecyclerView, PAGE_SIZE, mFooterClick);
     }
 
     @Override
