@@ -1,4 +1,4 @@
-package listener;
+package com.open.recyclerdemo.listener;
 
 import com.open.recyclerdemo.model.SampleModel;
 

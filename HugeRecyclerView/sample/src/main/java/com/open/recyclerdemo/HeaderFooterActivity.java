@@ -12,7 +12,7 @@ import com.open.recyclerdemo.presenter.SamplePresenter;
 
 import java.util.List;
 
-import listener.ISampleListener;
+import com.open.recyclerdemo.listener.ISampleListener;
 
 public class HeaderFooterActivity extends BaseActivity implements ISampleListener {
     private SamplePresenter mPresenter;

@@ -7,23 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.open.recyclerdemo.R;
 import com.open.hugerecyclerview.BaseRecyclerAdapter;
+import com.open.recyclerdemo.R;
 import com.open.recyclerdemo.model.SampleModel;
+import com.open.recyclerdemo.view.EndlessFooterView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by vivian on 2017/9/21.
- * recycler view third party template: https://github.com/captain-miao/RecyclerViewUtils
+ * Created by vivian on 2017/10/9.
  */
 
-public class SampleRecyclerAdapter extends
-        BaseRecyclerAdapter<SampleModel, SampleRecyclerAdapter.ItemViewHolder> {
-
+public class EndlessRecyclerAdapter extends
+        BaseRecyclerAdapter<SampleModel, EndlessRecyclerAdapter.ItemViewHolder> {
     private Context mContext;
 
-    public SampleRecyclerAdapter(Context context) {
+    public EndlessRecyclerAdapter(Context context) {
         mContext = context;
     }
 
@@ -34,19 +34,18 @@ public class SampleRecyclerAdapter extends
     }
 
     public void addData(List<SampleModel> data) {
-        int len = mItemList.size();
         mItemList.addAll(data);
-        notifyItemChanged(len);
+        notifyDataSetChanged();
     }
 
     @Override
-    public ItemViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
-        return new ItemViewHolder(LayoutInflater.from(mContext)
+    public EndlessRecyclerAdapter.ItemViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
+        return new EndlessRecyclerAdapter.ItemViewHolder(LayoutInflater.from(mContext)
                 .inflate(R.layout.recycler_item, parent, false));
     }
 
     @Override
-    public void onBindItemViewHolder(ItemViewHolder holder, int position) {
+    public void onBindItemViewHolder(EndlessRecyclerAdapter.ItemViewHolder holder, int position) {
         holder.hint.setText(mItemList.get(position).mTitle);
     }
 

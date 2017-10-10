@@ -21,7 +21,24 @@ public class SampleDataApi {
 
     private static List<SampleModel> mock() {
         List<SampleModel> list = new ArrayList<>();
-        for (int i = 'A'; i <= 'Z'; i++) {
+        for (int i = 'A'; i <= 'C'; i++) {
+            SampleModel model = new SampleModel("" + (char) i);
+            list.add(model);
+        }
+
+        return list;
+    }
+
+    public static List<SampleModel> refreshData() {
+        // do your consume work here
+        SystemClock.sleep(1000);
+
+        return mock2();
+    }
+
+    private static List<SampleModel> mock2() {
+        List<SampleModel> list = new ArrayList<>();
+        for (int i = 'A'; i <= 'D'; i++) {
             SampleModel model = new SampleModel("" + (char) i);
             list.add(model);
         }

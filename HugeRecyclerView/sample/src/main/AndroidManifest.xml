@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SimpleRecyclerActivity"></activity>
-        <activity android:name=".HeaderFooterActivity"></activity>
+        <activity android:name=".SimpleRecyclerActivity" />
+        <activity android:name=".HeaderFooterActivity" />
+        <activity android:name=".EndlessActivity"></activity>
     </application>
 
 </manifest>

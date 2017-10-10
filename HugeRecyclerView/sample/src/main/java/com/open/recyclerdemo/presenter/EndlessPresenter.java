@@ -2,6 +2,8 @@ package com.open.recyclerdemo.presenter;
 
 import android.util.Log;
 
+import com.open.recyclerdemo.listener.IEndlessListener;
+import com.open.recyclerdemo.listener.ISampleListener;
 import com.open.recyclerdemo.model.SampleDataApi;
 
 import org.apache.commons.lang3.StringUtils;
@@ -11,20 +13,19 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import com.open.recyclerdemo.listener.ISampleListener;
 
 /**
  * Created by vivian on 2017/9/26.
  * MVP's presenter for Second Fragment
  */
 
-public class SamplePresenter {
+public class EndlessPresenter {
     private static final String TAG = "SecondPresenter";
-    private ISampleListener mListener;
+    private IEndlessListener mListener;
     // rx
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    public void setListener(ISampleListener listener) {
+    public void setListener(IEndlessListener listener) {
         mListener = listener;
     }
 
@@ -39,13 +40,13 @@ public class SamplePresenter {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(data -> {
-                            Log.d(TAG, "getData Success" + StringUtils.join(data.toArray(), ","));
+                            Log.d(TAG, "getData Success: " + StringUtils.join(data.toArray(), ","));
                             if (mListener != null) {
                                 mListener.OnLoadSuccess(data);
                             }
                         },
                         error -> {
-                            Log.w(TAG, "getData error:", error);
+                            Log.w(TAG, "getData error: ", error);
                             if (mListener != null) {
                                 mListener.OnLoadFail(error.toString());
                             }
@@ -61,19 +62,19 @@ public class SamplePresenter {
             mListener.OnLoadStart();
         }
         // load data
-        Disposable dispose = Observable.fromCallable(SampleDataApi::getData)
+        Disposable dispose = Observable.fromCallable(SampleDataApi::refreshData)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(data -> {
-                            Log.d(TAG, "getData Success" + StringUtils.join(data.toArray(), ","));
+                            Log.d(TAG, "refreshData Success: " + StringUtils.join(data.toArray(), ","));
                             if (mListener != null) {
-                                mListener.OnLoadSuccess(data);
+                                mListener.OnRefreshSuccess(data);
                             }
                         },
                         error -> {
-                            Log.w(TAG, "getData error:", error);
+                            Log.w(TAG, "refreshData error: ", error);
                             if (mListener != null) {
-                                mListener.OnLoadFail(error.toString());
+                                mListener.OnRefreshFail(error.toString());
                             }
                         });
 

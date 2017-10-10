@@ -6,6 +6,6 @@
     <TextView
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/recycler_item_first_h"
+        android:layout_height="@dimen/recycler_item_h"
         android:gravity="center" />
 </FrameLayout>

@@ -11,4 +11,9 @@ public class SampleModel {
     SampleModel(String title) {
         mTitle = title;
     }
+
+    @Override
+    public String toString() {
+        return mTitle;
+    }
 }

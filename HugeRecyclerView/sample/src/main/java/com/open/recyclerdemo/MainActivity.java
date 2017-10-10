@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.tv_simple).setOnClickListener(this);
         findViewById(R.id.tv_header_footer).setOnClickListener(this);
+        findViewById(R.id.endless).setOnClickListener(this);
     }
 
     @Override
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tv_header_footer:
                 startActivity(HeaderFooterActivity.class);
                 break;
+            case R.id.endless:
+                startActivity(EndlessActivity.class);
             default:
                 break;
         }

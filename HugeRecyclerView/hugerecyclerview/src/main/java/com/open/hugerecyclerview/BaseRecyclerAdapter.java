@@ -1,13 +1,11 @@
-package com.open.hugerecyclerview.adapter;
+package com.open.hugerecyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by vivian on 2017/9/21.
@@ -21,15 +19,10 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     // model data
     protected List<T> mItemList;
 
-    //header view and footer view can't be recycled
-    private List<RecyclerView.ViewHolder> mHeaderViews = new ArrayList<>();
-    //store the ViewHolder for remove header view
-    private Map<View, RecyclerView.ViewHolder> mHeaderViewHolderMap = new HashMap<>();
+    //header view and footer view
+    private List<View> mHeaderViews = new ArrayList<>();
     private int mHeaderSize;
-    //header view and footer view can't be recycled
-    private List<RecyclerView.ViewHolder> mFooterViews = new ArrayList<>();
-    //store the ViewHolder for remove footer view
-    private Map<View, RecyclerView.ViewHolder> mFooterViewHolderMap = new HashMap<>();
+    private List<View> mFooterViews = new ArrayList<>();
     private int mFooterSize;
 
     public BaseRecyclerAdapter() {
@@ -58,10 +51,10 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
             return onCreateItemViewHolder(parent, viewType);
         }
         if (viewType < mHeaderSize) {// header
-            return mHeaderViews.get(viewType);
+            return new ViewHolder(mHeaderViews.get(viewType));
         }
         // footer
-        return mFooterViews.get(viewType - getBasicItemCount() - mHeaderSize);
+        return new ViewHolder(mFooterViews.get(viewType - getBasicItemCount() - mHeaderSize));
     }
 
     @Override
@@ -81,45 +74,47 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
         return position >= mHeaderSize && position < (getBasicItemCount() + mHeaderSize);
     }
 
-    private int getBasicItemCount() {
+    public int getBasicItemCount() {
         return mItemList == null ? 0 : mItemList.size();
     }
 
     public void addHeaderView(View view) {
-        RecyclerView.ViewHolder holder = new RecyclerView.ViewHolder(view) {
-        };
-        holder.setIsRecyclable(false);
-        mHeaderViewHolderMap.put(view, holder);
-        mHeaderViews.add(holder);
+        mHeaderViews.add(view);
         mHeaderSize = mHeaderViews.size();
         notifyItemInserted(mHeaderSize - 1);
     }
 
     public void removeHeaderView(View view) {
-        RecyclerView.ViewHolder viewHolder = mHeaderViewHolderMap.get(view);
-        if (mHeaderViews.remove(viewHolder)) {
+        if (mHeaderViews.remove(view)) {
             mHeaderSize = mHeaderViews.size();
-            mHeaderViewHolderMap.remove(view);
             notifyDataSetChanged();
         }
     }
 
+    public List<View> getHeaderView() {
+        return mHeaderViews;
+    }
+
     public void addFooterView(View view) {
-        RecyclerView.ViewHolder holder = new RecyclerView.ViewHolder(view) {
-        };
-        holder.setIsRecyclable(false);
-        mFooterViewHolderMap.put(view, holder);
-        mFooterViews.add(holder);
+        mFooterViews.add(view);
         mFooterSize = mFooterViews.size();
         notifyItemInserted(mFooterSize - 1);
     }
 
     public void removeFooterView(View view) {
-        RecyclerView.ViewHolder viewHolder = mFooterViewHolderMap.get(view);
-        if (viewHolder != null && mFooterViews.remove(viewHolder)) {
+        if (mFooterViews.remove(view)) {
             mFooterSize = mFooterViews.size();
-            mFooterViewHolderMap.remove(view);
             notifyDataSetChanged();
+        }
+    }
+
+    public List<View> getFooterView() {
+        return mFooterViews;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public ViewHolder(View itemView) {
+            super(itemView);
         }
     }
 

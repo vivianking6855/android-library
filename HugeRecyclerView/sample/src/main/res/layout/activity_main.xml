@@ -19,9 +19,11 @@
         android:text="HeaderFooter" />
 
     <TextView
+        android:id="@+id/endless"
         style="@style/TextStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Endless RecyclerView" />
 
     <TextView
         style="@style/TextStyle"

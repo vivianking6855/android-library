@@ -6,4 +6,9 @@
     <string name="load_success">load success</string>
     <string name="load_fail">load fail</string>
 
+    <!-- endless footer -->
+    <string name="list_footer_loading">正在加载…</string>
+    <string name="list_footer_network_error">点击重新加载</string>
+    <string name="list_footer_end">已经到底了</string>
+
 </resources>
