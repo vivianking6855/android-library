@@ -21,7 +21,7 @@ public class SampleDataApi {
 
     private static List<SampleModel> mock() {
         List<SampleModel> list = new ArrayList<>();
-        for (int i = 'A'; i <= 'C'; i++) {
+        for (int i = 'A'; i <= 'Z'; i++) {
             SampleModel model = new SampleModel("" + (char) i);
             list.add(model);
         }
@@ -38,7 +38,7 @@ public class SampleDataApi {
 
     private static List<SampleModel> mock2() {
         List<SampleModel> list = new ArrayList<>();
-        for (int i = 'A'; i <= 'D'; i++) {
+        for (int i = '0'; i <= '9'; i++) {
             SampleModel model = new SampleModel("" + (char) i);
             list.add(model);
         }

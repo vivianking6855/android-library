@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
-import com.open.recyclerdemo.adapter.SampleRecyclerAdapter;
+import com.open.recyclerdemo.adapter.HeaderFooterRecyclerAdapter;
 import com.open.recyclerdemo.base.BaseActivity;
 import com.open.recyclerdemo.model.SampleModel;
 import com.open.recyclerdemo.presenter.SamplePresenter;
@@ -18,7 +18,7 @@ public class HeaderFooterActivity extends BaseActivity implements ISampleListene
     private SamplePresenter mPresenter;
     private TextView mHint;
 
-    private SampleRecyclerAdapter mAdapter;
+    private HeaderFooterRecyclerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class HeaderFooterActivity extends BaseActivity implements ISampleListene
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager lm = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(lm);
-        mAdapter = new SampleRecyclerAdapter(this);
+        mAdapter = new HeaderFooterRecyclerAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
 
         // add header and foot for RecyclerView

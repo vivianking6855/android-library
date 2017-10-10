@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.open.recyclerdemo.R;
-import com.open.hugerecyclerview.BaseRecyclerAdapter;
+import com.open.hugerecyclerview.adapter.BaseRecyclerAdapter;
 import com.open.recyclerdemo.model.SampleModel;
 
 import java.util.List;
@@ -18,12 +18,12 @@ import java.util.List;
  * recycler view third party template: https://github.com/captain-miao/RecyclerViewUtils
  */
 
-public class SampleRecyclerAdapter extends
-        BaseRecyclerAdapter<SampleModel, SampleRecyclerAdapter.ItemViewHolder> {
+public class HeaderFooterRecyclerAdapter extends
+        BaseRecyclerAdapter<SampleModel, HeaderFooterRecyclerAdapter.ItemViewHolder> {
 
     private Context mContext;
 
-    public SampleRecyclerAdapter(Context context) {
+    public HeaderFooterRecyclerAdapter(Context context) {
         mContext = context;
     }
 

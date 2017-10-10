@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
-import com.open.recyclerdemo.adapter.SampleRecyclerAdapter;
+import com.open.recyclerdemo.adapter.SampleAdapter;
 import com.open.recyclerdemo.model.SampleModel;
 import com.open.recyclerdemo.presenter.SamplePresenter;
 
@@ -18,7 +18,7 @@ public class SimpleRecyclerActivity extends BaseActivity implements ISampleListe
     private SamplePresenter mPresenter;
     private TextView mHint;
 
-    private SampleRecyclerAdapter mAdapter;
+    private SampleAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class SimpleRecyclerActivity extends BaseActivity implements ISampleListe
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager lm = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(lm);
-        mAdapter = new SampleRecyclerAdapter(this);
+        mAdapter = new SampleAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
 
         mHint = (TextView) findViewById(R.id.tv_hint);

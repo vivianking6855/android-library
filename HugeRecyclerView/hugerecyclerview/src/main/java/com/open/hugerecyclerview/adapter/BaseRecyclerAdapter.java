@@ -1,4 +1,4 @@
-package com.open.hugerecyclerview;
+package com.open.hugerecyclerview.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Created by vivian on 2017/9/21.
- * recycler view third party template: https://github.com/captain-miao/RecyclerViewUtils
+ * recycler view adapter, support footer,header
  */
 
 public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter {

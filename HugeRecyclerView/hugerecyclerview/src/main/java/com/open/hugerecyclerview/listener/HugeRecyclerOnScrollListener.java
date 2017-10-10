@@ -1,8 +1,7 @@
-package com.open.recyclerdemo.listener;
+package com.open.hugerecyclerview.listener;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 /**
  * Created by vivian on 2017/9/12.
@@ -12,8 +11,6 @@ import android.util.Log;
 public abstract class HugeRecyclerOnScrollListener extends RecyclerView.OnScrollListener {
     private final static String TAG = HugeRecyclerOnScrollListener.class.getSimpleName();
 
-    // if data is still loading
-    private boolean loading = false;
     // all item count by LayoutManager.getItemCount();
     private int mTotalCount;
     // visible item count by LayoutManager.getChildCount();
@@ -46,15 +43,18 @@ public abstract class HugeRecyclerOnScrollListener extends RecyclerView.OnScroll
         RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
         mVisibleCount = layoutManager.getChildCount();
         mTotalCount = layoutManager.getItemCount();
-        Log.d(TAG, "mVisibleCount = " + mVisibleCount + ";mTotalCount = " +
-                mTotalCount + ";mLastVisibleItemPosition = " + mLastVisiblePosition
-                + ";newState=" + newState);
 
+        // if scroll idle and only one item not visible load more
+        // (total count -2 <= last visible position)
         if (mVisibleCount > 0
                 && newState == RecyclerView.SCROLL_STATE_IDLE
-                && mLastVisiblePosition >= mTotalCount - 2) {
+                && mTotalCount - 2 <= mLastVisiblePosition) {
             onLoadMore();
         }
+
+        //Log.d(TAG, "mVisibleCount = " + mVisibleCount + ";mTotalCount = " +
+        //        mTotalCount + ";mLastVisibleItemPosition = " + mLastVisiblePosition
+        //        + ";newState=" + newState);
     }
 }
 

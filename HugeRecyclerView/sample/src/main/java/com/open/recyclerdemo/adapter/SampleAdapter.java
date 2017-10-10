@@ -7,22 +7,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.open.hugerecyclerview.adapter.BaseRecyclerAdapter;
 import com.open.recyclerdemo.R;
 import com.open.recyclerdemo.model.SampleModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by vivian on 2017/10/9.
+ * Created by vivian on 2017/10/10.
  */
 
-public class EndlessRecyclerAdapter extends
-        BaseRecyclerAdapter<SampleModel, EndlessRecyclerAdapter.ItemViewHolder> {
+public class SampleAdapter extends RecyclerView.Adapter {
     private Context mContext;
 
-    public EndlessRecyclerAdapter(Context context) {
+    // model data
+    protected List<SampleModel> mItemList;
+
+    public SampleAdapter(Context context) {
         mContext = context;
+        mItemList = new ArrayList<>();
     }
 
     public void setData(List<SampleModel> data) {
@@ -32,19 +35,25 @@ public class EndlessRecyclerAdapter extends
     }
 
     public void addData(List<SampleModel> data) {
+        int len = mItemList.size();
         mItemList.addAll(data);
-        notifyDataSetChanged();
+        notifyItemChanged(len);
     }
 
     @Override
-    public EndlessRecyclerAdapter.ItemViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
-        return new EndlessRecyclerAdapter.ItemViewHolder(LayoutInflater.from(mContext)
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ItemViewHolder(LayoutInflater.from(mContext)
                 .inflate(R.layout.recycler_item, parent, false));
     }
 
     @Override
-    public void onBindItemViewHolder(EndlessRecyclerAdapter.ItemViewHolder holder, int position) {
-        holder.hint.setText(mItemList.get(position).mTitle);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ((ItemViewHolder) holder).hint.setText(mItemList.get(position).mTitle);
+    }
+
+    @Override
+    public int getItemCount() {
+        return mItemList == null ? 0 : mItemList.size();
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -55,5 +64,4 @@ public class EndlessRecyclerAdapter extends
             hint = (TextView) view.findViewById(R.id.tv_content);
         }
     }
-
 }

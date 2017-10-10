@@ -6,13 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.open.hugerecyclerview.listener.HugeRecyclerOnScrollListener;
+import com.open.hugerecyclerview.utils.EndlessFooterUtils;
 import com.open.recyclerdemo.adapter.EndlessRecyclerAdapter;
 import com.open.recyclerdemo.base.BaseActivity;
-import com.open.recyclerdemo.listener.HugeRecyclerOnScrollListener;
 import com.open.recyclerdemo.listener.IEndlessListener;
 import com.open.recyclerdemo.model.SampleModel;
 import com.open.recyclerdemo.presenter.EndlessPresenter;
-import com.open.recyclerdemo.view.EndlessFooterUtils;
 import com.open.recyclerdemo.view.EndlessFooterView;
 
 import java.util.List;
@@ -28,6 +28,8 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
     private EndlessRecyclerAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private HugeRecyclerOnScrollListener mHugeOnScrollListener;
+    private EndlessFooterUtils mFooterUtil;
+
     // all data account in server
     private static final int TOTAL_SIZE = 64;
     // each page size count
@@ -55,11 +57,12 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
         mRecyclerView.setLayoutManager(lm);
         mAdapter = new EndlessRecyclerAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
+        mFooterUtil = new EndlessFooterUtils(new EndlessFooterView(this));
         // set scroll listener
         mHugeOnScrollListener = new HugeRecyclerOnScrollListener() {
             @Override
             public void onLoadMore() {
-                EndlessFooterView.State state = EndlessFooterUtils.getFooterViewState(mRecyclerView);
+                EndlessFooterView.State state = mFooterUtil.getFooterViewState(mRecyclerView);
                 // still loading, do nothing
                 if (EndlessFooterView.State.Loading == state) {
                     Log.d(TAG, "still loading, now return");
@@ -67,8 +70,7 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
                 }
                 // no more data
                 if (mCurrentNum > TOTAL_SIZE) {
-                    EndlessFooterUtils.setFooterViewState(EndlessActivity.this,
-                            mRecyclerView, PAGE_SIZE, EndlessFooterView.State.End, null);
+                    mFooterUtil.setEnd(EndlessActivity.this, mRecyclerView, PAGE_SIZE);
                     return;
                 }
 
@@ -81,10 +83,9 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
         mHint = (TextView) findViewById(R.id.tv_hint);
     }
 
-    private void refreshData(){
+    private void refreshData() {
         // loading more data
-        EndlessFooterUtils.setFooterViewState(EndlessActivity.this,
-                mRecyclerView, PAGE_SIZE, EndlessFooterView.State.Loading, null);
+        mFooterUtil.setLoading(EndlessActivity.this, mRecyclerView, PAGE_SIZE);
         mPresenter.refreshData();
     }
 
@@ -113,14 +114,12 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
     public void OnRefreshSuccess(List<SampleModel> data) {
         mAdapter.addData(data);
         mCurrentNum += data.size();
-        EndlessFooterUtils.setFooterViewState(EndlessActivity.this, mRecyclerView,
-                PAGE_SIZE, EndlessFooterView.State.Normal, null);
+        mFooterUtil.setNormal(EndlessActivity.this, mRecyclerView, PAGE_SIZE);
     }
 
     @Override
     public void OnRefreshFail(String error) {
-        EndlessFooterUtils.setFooterViewState(EndlessActivity.this, mRecyclerView,
-                PAGE_SIZE, EndlessFooterView.State.Error, null);
+        mFooterUtil.setError(EndlessActivity.this, mRecyclerView, PAGE_SIZE);
     }
 
     @Override
