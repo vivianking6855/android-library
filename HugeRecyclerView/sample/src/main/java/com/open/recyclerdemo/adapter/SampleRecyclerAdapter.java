@@ -17,13 +17,13 @@ import java.util.List;
  * Created by vivian on 2017/10/10.
  */
 
-public class SampleAdapter extends RecyclerView.Adapter {
+public class SampleRecyclerAdapter extends RecyclerView.Adapter {
     private Context mContext;
 
     // model data
     protected List<SampleModel> mItemList;
 
-    public SampleAdapter(Context context) {
+    public SampleRecyclerAdapter(Context context) {
         mContext = context;
         mItemList = new ArrayList<>();
     }
