@@ -2,6 +2,8 @@ package com.open.recyclerdemo.model;
 
 import android.os.SystemClock;
 
+import com.open.utislib.net.NetworkUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 

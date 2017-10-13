@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.open.hugerecyclerview.listener.HugeRecyclerOnScrollListener;
 import com.open.hugerecyclerview.utils.EndlessFooterUtils;
@@ -15,6 +16,8 @@ import com.open.recyclerdemo.listener.IEndlessListener;
 import com.open.recyclerdemo.model.SampleModel;
 import com.open.recyclerdemo.presenter.EndlessPresenter;
 import com.open.recyclerdemo.view.EndlessFooterView;
+import com.open.utislib.net.NetworkUtils;
+import com.open.utislib.window.ToastUtils;
 
 import java.util.List;
 
@@ -85,6 +88,14 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
     }
 
     private void refreshData() {
+        if (!NetworkUtils.isConnected(EndlessActivity.this)) {
+            mFooterUtil.setError(EndlessActivity.this, mRecyclerView, PAGE_SIZE, mFooterClick);
+            Log.w(TAG, "net work no connected");
+            ToastUtils.INSTANCE.showToast(EndlessActivity.this, "net work no connected",
+                    Toast.LENGTH_SHORT);
+            return;
+        }
+
         // loading more data
         mFooterUtil.setLoading(EndlessActivity.this, mRecyclerView, PAGE_SIZE);
         mPresenter.refreshData();
