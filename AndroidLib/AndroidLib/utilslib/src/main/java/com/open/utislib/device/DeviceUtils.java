@@ -12,7 +12,7 @@ public final class DeviceUtils {
 
     /**
      * 获取屏幕的宽度（单位：px）
-     *
+     * @param context context
      * @return 屏幕宽px
      */
     public static int getScreenWidth(Context context) {
@@ -24,7 +24,7 @@ public final class DeviceUtils {
 
     /**
      * 获取屏幕的高度（单位：px）
-     *
+     * @param context context
      * @return 屏幕高px
      */
     public static int getScreenHeight(Context context) {

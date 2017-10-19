@@ -18,8 +18,9 @@ public final class NetworkUtils {
     }
 
     /**
-     * open setting -> network
+     * open setting -- network
      * <p> open setting before android 3.0</p>
+     * @param context context
      */
     public static void openWirelessSettings(Context context) {
         if (android.os.Build.VERSION.SDK_INT > 10) {
@@ -32,7 +33,7 @@ public final class NetworkUtils {
     /**
      * get NetworkInfo
      * <p>{@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
-     *
+     * @param context context
      * @return NetworkInfo
      */
     private static NetworkInfo getActiveNetworkInfo(Context context) {
@@ -42,7 +43,7 @@ public final class NetworkUtils {
     /**
      * if network connected
      * <p>{@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
-     *
+     * @param context context
      * @return {@code true}: yes<br>{@code false}: no
      */
     public static boolean isConnected(Context context) {
@@ -53,7 +54,7 @@ public final class NetworkUtils {
     /**
      * 判断wifi是否连接状态
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
-     *
+     * @param context context
      * @return {@code true}: 连接<br>{@code false}: 未连接
      */
     public static boolean isWifiConnected(Context context) {
@@ -70,7 +71,7 @@ public final class NetworkUtils {
     /**
      * 获取当前网络类型
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
-     *
+     * @param context context
      * @return 网络类型
      * <ul>
      * <li>{@link NetworkType#NETWORK_WIFI   } </li>

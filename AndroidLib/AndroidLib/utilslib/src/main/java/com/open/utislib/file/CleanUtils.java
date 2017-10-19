@@ -9,7 +9,7 @@ public final class CleanUtils {
     /**
      * 清除内部缓存
      * <p>/data/data/com.xxx.xxx/cache</p>
-     *
+     * @param context context
      * @return {@code true}: 清除成功<br>{@code false}: 清除失败
      */
     public static boolean cleanInternalCache(Context context) {
@@ -19,7 +19,7 @@ public final class CleanUtils {
     /**
      * 清除内部文件
      * <p>/data/data/com.xxx.xxx/files</p>
-     *
+     * @param context context
      * @return {@code true}: 清除成功<br>{@code false}: 清除失败
      */
     public static boolean cleanInternalFiles(Context context) {
@@ -29,7 +29,7 @@ public final class CleanUtils {
     /**
      * 清除内部数据库
      * <p>/data/data/com.xxx.xxx/databases</p>
-     *
+     * @param context context
      * @return {@code true}: 清除成功<br>{@code false}: 清除失败
      */
     public static boolean cleanInternalDbs(Context context) {
@@ -39,7 +39,7 @@ public final class CleanUtils {
     /**
      * 根据名称清除数据库
      * <p>/data/data/com.xxx.xxx/databases/dbName</p>
-     *
+     * @param context context
      * @param dbName  数据库名称
      * @return {@code true}: 清除成功<br>{@code false}: 清除失败
      */
@@ -50,7 +50,7 @@ public final class CleanUtils {
     /**
      * 清除内部SP
      * <p>/data/data/com.xxx.xxx/shared_prefs</p>
-     *
+     * @param context context
      * @return {@code true}: 清除成功<br>{@code false}: 清除失败
      */
     public static boolean cleanInternalSP(Context context) {
@@ -60,7 +60,7 @@ public final class CleanUtils {
     /**
      * 清除外部缓存
      * <p>/storage/emulated/0/android/data/com.xxx.xxx/cache</p>
-     *
+     * @param context context
      * @return {@code true}: 清除成功<br>{@code false}: 清除失败
      */
     public static boolean cleanExternalCache(Context context) {
