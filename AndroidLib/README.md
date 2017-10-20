@@ -15,31 +15,9 @@ AndroidLib 总结了项目中常用的库，实现Code更便捷的重用，优�
 
 # utilslib使用方法 (Android Studio)
 
-1. load AndroidLib code
-2. add following to settings.gradle (cacheLib, appLib 可选). 
+使用方法说明，点击[这里](https://github.com/vivianking6855/android-library/tree/master/AndroidLib/AndroidLib)
 
-        include ':AndroidLib'
-        project(':AndroidLib').projectDir = new File('../AndroidLib/')
-        include ':AndroidLib:utilslib'
+截图
 
-路径'../AndroidLib/' 需要据实际路径调整
+![](https://i.imgur.com/VPd06AC.jpg)
 
-3. add following to build.gradle (app)
-
-        dependencies {
-            compile project(':AndroidLib:utilslib')
-        }
-        
-## Proguard
-
-- applib
-
-        -keep class com.open.utilslib.** { *; }
-        -keepclassmembers class com.open.utilslib.** { *; }
-        -dontwarn com.open.utilslib.**
-
-# Java Doc 
-
-# Contributor
-
-vivian sun

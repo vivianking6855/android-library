@@ -1,4 +1,1 @@
 include ':sample', ':hugerecyclerview'
-include ':AndroidLib'
-project(':AndroidLib').projectDir = new File('../AndroidLib/AndroidLib/')
-include ':AndroidLib:utilslib'

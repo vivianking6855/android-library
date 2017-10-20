@@ -16,3 +16,9 @@
 ## java doc
 
 download [here](https://github.com/vivianking6855/android-library/tree/master/AndroidLib/doc)
+
+需要下载后，在本地点击index.html查看。暂时无法在网页端直接浏览。
+
+# Contributor
+
+vivian sun
