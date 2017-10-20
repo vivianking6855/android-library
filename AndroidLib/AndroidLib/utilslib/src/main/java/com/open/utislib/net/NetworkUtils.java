@@ -18,7 +18,7 @@ public final class NetworkUtils {
     }
 
     /**
-     * open setting -- network
+     * open setting -- network<br>
      * <p> open setting before android 3.0</p>
      * @param context context
      */
@@ -41,7 +41,7 @@ public final class NetworkUtils {
     }
 
     /**
-     * if network connected
+     * if network connected <br>
      * <p>{@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
      * @param context context
      * @return {@code true}: yes<br>{@code false}: no
@@ -52,7 +52,7 @@ public final class NetworkUtils {
     }
 
     /**
-     * 判断wifi是否连接状态
+     * 判断wifi是否连接状态<br>
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
      * @param context context
      * @return {@code true}: 连接<br>{@code false}: 未连接
@@ -69,7 +69,7 @@ public final class NetworkUtils {
     private static final int NETWORK_TYPE_IWLAN = 18;
 
     /**
-     * 获取当前网络类型
+     * 获取当前网络类型<br>
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
      * @param context context
      * @return 网络类型

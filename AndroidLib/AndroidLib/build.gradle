@@ -18,7 +18,7 @@ allprojects {
         jcenter()
     }
 
-    tasks.withType(Javadoc) {
+    tasks.withType(Javadoc) {// publish doc encoding
         options{
             encoding "UTF-8"
             charSet 'UTF-8'
