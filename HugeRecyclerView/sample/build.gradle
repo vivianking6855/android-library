@@ -25,17 +25,15 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
-    // rxjava
-    // commons-lang
     // dependency lib
-    compile project(':hugerecyclerview')
     compile 'com.android.support:appcompat-v7:25.3.1'
+    // rxjava
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.0.8'
+    // commons-lang
     compile 'org.apache.commons:commons-lang3:3.6'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
-
     // utils library
     compile 'com.open.library:utilslib:1.0.171019'
+    // huge recyclerview library
+    compile 'com.open:hugerecyclerview:1.0.0'
 }

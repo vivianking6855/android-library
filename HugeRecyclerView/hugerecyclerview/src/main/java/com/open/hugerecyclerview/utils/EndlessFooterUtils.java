@@ -61,6 +61,7 @@ public class EndlessFooterUtils {
      * @param context      the context
      * @param recyclerView the recycler view
      * @param pageSize     the page size
+     * @param errorListener error status listener
      */
     public void setError(Context context, RecyclerView recyclerView, int pageSize,
                          View.OnClickListener errorListener) {
