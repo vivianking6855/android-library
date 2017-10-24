@@ -9,8 +9,6 @@ import android.support.v7.widget.RecyclerView;
  */
 
 public abstract class HugeRecyclerOnScrollListener extends RecyclerView.OnScrollListener {
-    private final static String TAG = HugeRecyclerOnScrollListener.class.getSimpleName();
-
     // all item count by LayoutManager.getItemCount();
     private int mTotalCount;
     // visible item count by LayoutManager.getChildCount();

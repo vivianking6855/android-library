@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".SimpleRecyclerActivity" />
         <activity android:name=".HeaderFooterActivity" />
-        <activity android:name=".EndlessActivity"></activity>
+        <activity android:name=".EndlessActivity" />
+        <activity android:name=".SwipeRefreshActivity" />
+        <activity android:name=".EndlessCustormerActivity"></activity>
     </application>
 
 </manifest>

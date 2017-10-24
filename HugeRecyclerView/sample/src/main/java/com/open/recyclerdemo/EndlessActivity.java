@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.open.hugerecyclerview.EndlessFooterView;
 import com.open.hugerecyclerview.listener.HugeRecyclerOnScrollListener;
 import com.open.hugerecyclerview.utils.EndlessFooterUtils;
 import com.open.recyclerdemo.adapter.EndlessRecyclerAdapter;
@@ -15,7 +16,6 @@ import com.open.recyclerdemo.base.BaseActivity;
 import com.open.recyclerdemo.listener.IEndlessListener;
 import com.open.recyclerdemo.model.SampleModel;
 import com.open.recyclerdemo.presenter.EndlessPresenter;
-import com.open.recyclerdemo.view.EndlessFooterView;
 import com.open.utislib.net.NetworkUtils;
 import com.open.utislib.window.ToastUtils;
 
@@ -32,7 +32,7 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
     private EndlessRecyclerAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private HugeRecyclerOnScrollListener mHugeOnScrollListener;
-    private EndlessFooterUtils mFooterUtil;
+    protected EndlessFooterUtils mFooterUtil;
 
     // all data account in server
     private static final int TOTAL_SIZE = 64;
@@ -54,7 +54,7 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_head_footer);
+        setContentView(R.layout.activity_endless);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager lm = new LinearLayoutManager(this);
@@ -74,7 +74,7 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
                 }
                 // no more data
                 if (mCurrentNum > TOTAL_SIZE) {
-                    mFooterUtil.setEnd(EndlessActivity.this, mRecyclerView, PAGE_SIZE);
+                    mFooterUtil.setEnd(mRecyclerView, PAGE_SIZE);
                     return;
                 }
 
@@ -89,7 +89,7 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
 
     private void refreshData() {
         if (!NetworkUtils.isConnected(EndlessActivity.this)) {
-            mFooterUtil.setError(EndlessActivity.this, mRecyclerView, PAGE_SIZE, mFooterClick);
+            mFooterUtil.setError(mRecyclerView, PAGE_SIZE, mFooterClick);
             Log.w(TAG, "net work no connected");
             ToastUtils.INSTANCE.showToast(EndlessActivity.this, "net work no connected",
                     Toast.LENGTH_SHORT);
@@ -97,7 +97,7 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
         }
 
         // loading more data
-        mFooterUtil.setLoading(EndlessActivity.this, mRecyclerView, PAGE_SIZE);
+        mFooterUtil.setLoading(mRecyclerView, PAGE_SIZE);
         mPresenter.refreshData();
     }
 
@@ -126,7 +126,7 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
     public void OnRefreshSuccess(List<SampleModel> data) {
         mAdapter.addData(data);
         mCurrentNum += data.size();
-        mFooterUtil.setNormal(EndlessActivity.this, mRecyclerView, PAGE_SIZE);
+        mFooterUtil.setNormal(mRecyclerView, PAGE_SIZE);
     }
 
     private View.OnClickListener mFooterClick = new View.OnClickListener() {
@@ -138,7 +138,7 @@ public class EndlessActivity extends BaseActivity implements IEndlessListener {
 
     @Override
     public void OnRefreshFail(String error) {
-        mFooterUtil.setError(EndlessActivity.this, mRecyclerView, PAGE_SIZE, mFooterClick);
+        mFooterUtil.setError(mRecyclerView, PAGE_SIZE, mFooterClick);
     }
 
     @Override

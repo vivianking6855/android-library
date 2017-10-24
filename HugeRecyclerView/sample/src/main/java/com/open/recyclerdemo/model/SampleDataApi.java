@@ -33,7 +33,7 @@ public class SampleDataApi {
 
     public static List<SampleModel> refreshData() {
         // do your consume work here
-        SystemClock.sleep(1000);
+        SystemClock.sleep(3000);
 
         return mock2();
     }

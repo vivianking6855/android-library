@@ -23,21 +23,22 @@ Maven
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-备注：HeaderFooter和Endless Activity也可以直接用系统的RecyclerView
     
 # Feature List
 
-- Header,Footer
-- Endless 上滑刷新
-- 下拉刷新
+- Header,Footer （可以直接搭配系统的RecyclerView使用）
+- Endless 上滑刷新 （可以直接搭配系统的RecyclerView使用）
+- 下拉刷新 （SwipeRefreshLayout实现下拉刷新和三方库实现下拉刷新）
 
-# Header,Footer
+# 一、 Header,Footer
+
+效果图
 
    ![](https://i.imgur.com/w6rp5sD.png)
 
    ![](https://i.imgur.com/fATcYUi.png)
     
-## 使用方法：详见sample的 HeaderFooterActivity
+Header，Footer使用方法简介如下：（详见sample的 HeaderFooterActivity）
 
 1. 定义HeaderFooterRecyclerAdapter继承BaseRecyclerAdapter，再加两个接口setData和addData
 
@@ -106,80 +107,35 @@ Maven
         }
 
 
-# Endless Footer
+# 二、 Endless Footer
+
+效果图
 
    ![](https://i.imgur.com/jl9baMT.jpg)
 
    ![](https://i.imgur.com/5jcGgJt.jpg)
     
    ![](https://i.imgur.com/1JwjYs6.jpg)
+   
+   ![](https://i.imgur.com/kQDYnbC.png)
+   
+   ![](https://i.imgur.com/Qco3dp7.png)
 
-## 使用方法：详见sample的 EndlessActivity
+核心类说明
 
 - EndlessFooterUtils: 依据数据加载的状态改变底层footer的UI显示
 - HugeRecyclerOnScrollListener: 滚动监听，可以在这里处理滚动结束，加载数据的动作
 - EndlessFooterView：底层footer view，里面有不同状态对应的UI布局
 
-1. 定义 EndlessFooterView extends BaseEndlessFooterView. 实现三个加载状态的UI的配置和更新：加载中/全部加载完成/加载异常
+- 上滑基本使用方法简介如下：（详见sample的 EndlessActivity）
 
-自定义三种状态的xml：参见sample的endless_footer.xml,endless_footer_loading.xml,endless_footer_error.xml,endless_footer_end.xml
+mFooterUtil = new EndlessFooterUtils(new EndlessFooterView(this));
 
-    public class EndlessFooterView extends BaseEndlessFooterView {
-        private final static String TAG = "EndlessFooterView";
-    
-        private TextView mLoadingText;
-        private ProgressBar mLoadingProgress;
-    
-        private Context mContext;
-    
-        public EndlessFooterView(Context context){
-            super(context);
-            mContext = context;
-            initView();
-        }
-    
-        @Override
-        protected void setContentView() {
-            inflate(mContext, R.layout.endless_footer, this);
-        }
-    
-        @Override
-        protected void setLoadingView() {
-            if (mLoadingView == null) {
-                ViewStub viewStub = (ViewStub) findViewById(R.id.loading_viewstub);
-                mLoadingView = viewStub.inflate();
-    
-                mLoadingProgress = (ProgressBar) mLoadingView.findViewById(R.id.loading_progress);
-                mLoadingText = (TextView) mLoadingView.findViewById(R.id.loading_text);
-            }
-            mLoadingProgress.setVisibility(View.VISIBLE);
-            mLoadingText.setText(R.string.list_footer_loading);
-        }
-    
-        @Override
-        protected void setErrorView() {
-            if (mNetworkErrorView == null) {
-                ViewStub viewStub = (ViewStub) findViewById(R.id.error_viewstub);
-                mNetworkErrorView = viewStub.inflate();
-            }
-        }
-    
-        @Override
-        protected void setEndView() {
-            ViewStub viewStub = (ViewStub) findViewById(R.id.end_viewstub);
-            mTheEndView = viewStub.inflate();
-        }
-    }
+Activity中配置HugeRecycler的listener
 
-2. Activity中配置HugeRecycler的listener
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        LinearLayoutManager lm = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(lm);
-        mAdapter = new EndlessRecyclerAdapter(this);
-        mRecyclerView.setAdapter(mAdapter);
         mFooterUtil = new EndlessFooterUtils(new EndlessFooterView(this));
-        // set scroll listener
+
+         // set scroll listener
         mHugeOnScrollListener = new HugeRecyclerOnScrollListener() {
             @Override
             public void onLoadMore() {
@@ -201,6 +157,64 @@ Maven
         // add scroll listener
         mRecyclerView.addOnScrollListener(mHugeOnScrollListener);
 
+然后依据数据加载的状态调用mFooterUtil的方法设定FooterView显示状态
+
+- 上滑的高级用法：自定义EndlessFooterView实现客制化的UI界面
+
+    可以直接继承EndlessFooterView 或者 BaseEndlessFooterView （详见sample的 CustomerEndlessActivity）
+
+    1. 定义 CustomerEndlessFooterView extends EndlessFooterView. 
+     
+            @Override
+            protected void setContentView(Context context) {
+                inflate(context, R.layout.endless_user_footer, this);
+            }
+    
+    2. 自定义三种状态的xml
+     
+        参见sample
+        
+        endless_user_footer.xml,
+        
+        endless_user_footer_loading.xml,
+        
+        endless_user_footer_error.xml,
+        
+        endless_user_footer_end.xml
+        
+        注意endless_user_footer.xml中一定要包含下面的三个id
+        
+            <ViewStub
+                android:id="@+id/loading_viewstub"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/endless_footer_h"
+                android:layout="@layout/endless_footer_loading" />
+        
+            <ViewStub
+                android:id="@+id/end_viewstub"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/endless_footer_h"
+                android:layout="@layout/endless_footer_end" />
+        
+            <ViewStub
+                android:id="@+id/error_viewstub"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/endless_footer_h"
+                android:layout="@layout/endless_footer_error" />
+
+    
+    3. mFooterUtil = new EndlessFooterUtils(new CustomerEndlessFooterView(this));
+
+
+# 三、 下拉刷新
+
+SwipeRefreshLayout实现下拉刷新
+
+    ![](https://i.imgur.com/heGhSkj.jpg)
+    
+
+
+实现直接参看[RecyclerView封装 四](http://vivianking6855.github.io/2017/09/30/RecyclerView-Advance-4/)
 
 # Blog
 
@@ -210,6 +224,9 @@ Huger RecyclerView封装blog
 - [RecyclerView封装 二](http://vivianking6855.github.io/2017/09/30/RecyclerView-Advance-2/)
 - [RecyclerView封装 三](http://vivianking6855.github.io/2017/09/30/RecyclerView-Advance-3/)
 - [RecyclerView封装 四](http://vivianking6855.github.io/2017/09/30/RecyclerView-Advance-4/)
-- [RecyclerView封装 五](http://vivianking6855.github.io/2017/09/30/RecyclerView-Advance-5/)
+- [RecyclerView封装 五](http://vivianking6855.github.io/2017/10/31/RecyclerView-Advance-5/)
+- [RecyclerView封装 六](http://vivianking6855.github.io/2017/11/01/RecyclerView-Advance-6/)
+- [RecyclerView封装 七](http://vivianking6855.github.io/2017/11/08/RecyclerView-Advance-7/)
+- [RecyclerView封装 八](http://vivianking6855.github.io/2017/11/22/RecyclerView-Advance-8/)
 
 

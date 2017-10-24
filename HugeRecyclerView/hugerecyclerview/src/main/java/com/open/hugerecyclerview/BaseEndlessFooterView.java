@@ -7,13 +7,13 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 /**
- * loading footer view for ListView/GridView/RecyclerView when loading by spit page
+ * loading footer base view for ListView/GridView/RecyclerView when loading by spit page
  */
 public abstract class BaseEndlessFooterView extends RelativeLayout {
     private final static String TAG = "BaseEndlessFooterView";
 
     // failed view
-    protected View mNetworkErrorView;
+    protected View mErrorView;
     // end, no more data view
     protected View mTheEndView;
     // loading views
@@ -30,7 +30,7 @@ public abstract class BaseEndlessFooterView extends RelativeLayout {
     }
 
     // set view layout
-    protected abstract void setContentView();
+    protected abstract void setContentView(Context context);
 
     // set loading view
     protected abstract void setLoadingView();
@@ -42,21 +42,27 @@ public abstract class BaseEndlessFooterView extends RelativeLayout {
     protected abstract void setEndView();
 
     public BaseEndlessFooterView(Context context) {
-        super(context);
+        this(context,null,0);
     }
 
     public BaseEndlessFooterView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs,0);
     }
 
-    public BaseEndlessFooterView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+    public BaseEndlessFooterView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        initView(context);
     }
 
-    protected void initView() {
-        setContentView();
+    private void initView(Context context) {
+        setContentView(context);
         setOnClickListener(null);
         setState(State.Normal);
+
+        // inflate views
+        setLoadingView();
+        setEndView();
+        setErrorView();
     }
 
     public State getState() {
@@ -100,7 +106,6 @@ public abstract class BaseEndlessFooterView extends RelativeLayout {
 
     private void dealLoading() {
         setOnClickListener(null);
-        setLoadingView();
         if (mLoadingView != null) {
             mLoadingView.setVisibility(VISIBLE);
         }
@@ -108,16 +113,14 @@ public abstract class BaseEndlessFooterView extends RelativeLayout {
 
     private void dealEnd() {
         setOnClickListener(null);
-        setEndView();
         if (mTheEndView != null) {
             mTheEndView.setVisibility(VISIBLE);
         }
     }
 
     private void dealError() {
-        setErrorView();
-        if (mNetworkErrorView != null) {
-            mNetworkErrorView.setVisibility(VISIBLE);
+        if (mErrorView != null) {
+            mErrorView.setVisibility(VISIBLE);
         }
     }
 
@@ -128,8 +131,8 @@ public abstract class BaseEndlessFooterView extends RelativeLayout {
         if (mTheEndView != null) {
             mTheEndView.setVisibility(GONE);
         }
-        if (mNetworkErrorView != null) {
-            mNetworkErrorView.setVisibility(GONE);
+        if (mErrorView != null) {
+            mErrorView.setVisibility(GONE);
         }
     }
 }

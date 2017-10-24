@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- endless footer -->
+    <color name="color_ff">#F0F0F0</color>
+    <color name="endless_footer_text_color">#8A000000</color>
+</resources>

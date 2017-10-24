@@ -1,0 +1,12 @@
+<resources>
+    <!-- Text -->
+    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_padding">10dp</dimen>
+
+    <!-- endless footer -->
+    <dimen name="endless_footer_h">60dp</dimen>
+    <dimen name="endless_footer_icon_h">22dp</dimen>
+    <dimen name="endless_footer_icon_right">4dp</dimen>
+</resources>

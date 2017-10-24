@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.open.recyclerdemo.view.CustomerEndlessFooterView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -12,9 +16,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.tv_simple).setOnClickListener(this);
-        findViewById(R.id.tv_header_footer).setOnClickListener(this);
-        findViewById(R.id.endless).setOnClickListener(this);
+        initView();
+    }
+
+    private void initView() {
+        // set on click listener
+        ViewGroup group = (ViewGroup) findViewById(R.id.layout_root);
+        for (int i = 0; i < group.getChildCount(); i++) {
+            View child = group.getChildAt(i);
+            if (child instanceof TextView) {
+                child.setOnClickListener(this);
+            }
+        }
     }
 
     @Override
@@ -28,6 +41,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.endless:
                 startActivity(EndlessActivity.class);
+                break;
+            case R.id.endless_user:
+                startActivity(EndlessCustormerActivity.class);
+                break;
+            case R.id.swipe:
+                startActivity(SwipeRefreshActivity.class);
+                break;
             default:
                 break;
         }

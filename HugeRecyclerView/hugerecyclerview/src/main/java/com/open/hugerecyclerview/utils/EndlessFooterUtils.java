@@ -1,6 +1,5 @@
 package com.open.hugerecyclerview.utils;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -25,59 +24,54 @@ public class EndlessFooterUtils {
     /**
      * Sets end.you must set footer view before you use
      *
-     * @param context      the context
      * @param recyclerView the recycler view
      * @param pageSize     the page size
      */
-    public void setEnd(Context context, RecyclerView recyclerView, int pageSize) {
-        setFooterViewState(context, recyclerView, pageSize, BaseEndlessFooterView.State.End, null);
+    public void setEnd(RecyclerView recyclerView, int pageSize) {
+        setFooterViewState(recyclerView, pageSize, BaseEndlessFooterView.State.End, null);
     }
 
     /**
      * Sets normal.you must set footer view before you use
      *
-     * @param context      the context
      * @param recyclerView the recycler view
      * @param pageSize     the page size
      */
-    public void setNormal(Context context, RecyclerView recyclerView, int pageSize) {
-        setFooterViewState(context, recyclerView, pageSize, BaseEndlessFooterView.State.Normal, null);
+    public void setNormal(RecyclerView recyclerView, int pageSize) {
+        setFooterViewState(recyclerView, pageSize, BaseEndlessFooterView.State.Normal, null);
     }
 
     /**
      * Sets loading.you must set footer view before you use
      *
-     * @param context      the context
      * @param recyclerView the recycler view
      * @param pageSize     the page size
      */
-    public void setLoading(Context context, RecyclerView recyclerView, int pageSize) {
-        setFooterViewState(context, recyclerView, pageSize, BaseEndlessFooterView.State.Loading, null);
+    public void setLoading(RecyclerView recyclerView, int pageSize) {
+        setFooterViewState(recyclerView, pageSize, BaseEndlessFooterView.State.Loading, null);
     }
 
     /**
      * Sets error.you must set footer view before you use
      *
-     * @param context      the context
-     * @param recyclerView the recycler view
-     * @param pageSize     the page size
+     * @param recyclerView  the recycler view
+     * @param pageSize      the page size
      * @param errorListener error status listener
      */
-    public void setError(Context context, RecyclerView recyclerView, int pageSize,
+    public void setError(RecyclerView recyclerView, int pageSize,
                          View.OnClickListener errorListener) {
-        setFooterViewState(context, recyclerView, pageSize, BaseEndlessFooterView.State.Error, errorListener);
+        setFooterViewState(recyclerView, pageSize, BaseEndlessFooterView.State.Error, errorListener);
     }
 
     /**
      * Sets footer view state.
      *
-     * @param context       the context
      * @param recyclerView  the recycler view
      * @param pageSize      the page size
      * @param state         the state
      * @param errorListener the error listener
      */
-    private void setFooterViewState(Context context, RecyclerView recyclerView, int pageSize,
+    private void setFooterViewState(RecyclerView recyclerView, int pageSize,
                                     BaseEndlessFooterView.State state, View.OnClickListener errorListener) {
         if (mView == null) {
             Log.e(TAG, "you must set footer view before you use");

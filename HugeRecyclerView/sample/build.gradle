@@ -35,5 +35,6 @@ dependencies {
     // utils library
     compile 'com.open.library:utilslib:1.0.171019'
     // huge recyclerview library
-    compile 'com.open:hugerecyclerview:1.0.0'
+    //compile 'com.open:hugerecyclerview:1.0.1'
+    compile project(':hugerecyclerview')
 }

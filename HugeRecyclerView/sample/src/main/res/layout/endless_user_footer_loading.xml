@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loading_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="horizontal">
 
-    <ImageView
+    <ProgressBar
+        android:id="@+id/loading_progress"
         android:layout_width="@dimen/endless_footer_icon_h"
         android:layout_height="@dimen/endless_footer_icon_h"
         android:layout_marginRight="@dimen/endless_footer_icon_right"
-        android:src="@drawable/endless_footer_error" />
+        android:indeterminateDrawable="@drawable/endless_user_footer_progress" />
 
     <TextView
         android:id="@+id/loading_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/list_footer_network_error"
+        android:text="@string/user_footer_loading"
         android:textColor="@color/endless_footer_text_color"
         android:textSize="@dimen/text_size_medium" />
 </LinearLayout>

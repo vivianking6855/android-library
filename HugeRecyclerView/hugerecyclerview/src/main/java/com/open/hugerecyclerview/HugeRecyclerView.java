@@ -11,13 +11,11 @@ import android.util.AttributeSet;
 public class HugeRecyclerView extends RecyclerView {
 
     public HugeRecyclerView(Context context) {
-        super(context);
-        init(null, 0);
+        this(context, null, 0);
     }
 
     public HugeRecyclerView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(attrs, 0);
+        this(context, attrs, 0);
     }
 
     public HugeRecyclerView(Context context, AttributeSet attrs, int defStyle) {
