@@ -11,7 +11,6 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 
 import com.open.utislib.file.CloseUtils;
-import com.open.utislib.file.MemoryConstants;
 import com.open.utislib.time.TimeConstants;
 
 import java.io.ByteArrayInputStream;

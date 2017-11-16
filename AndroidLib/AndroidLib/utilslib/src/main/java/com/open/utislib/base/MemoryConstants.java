@@ -1,4 +1,4 @@
-package com.open.utislib.file;
+package com.open.utislib.base;
 
 import android.support.annotation.IntDef;
 

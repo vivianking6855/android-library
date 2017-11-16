@@ -1,6 +1,7 @@
 package com.open.utislib.device;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
@@ -12,6 +13,7 @@ public final class DeviceUtils {
 
     /**
      * 获取屏幕的宽度（单位：px）
+     *
      * @param context context
      * @return 屏幕宽px
      */
@@ -24,6 +26,7 @@ public final class DeviceUtils {
 
     /**
      * 获取屏幕的高度（单位：px）
+     *
      * @param context context
      * @return 屏幕高px
      */
@@ -70,6 +73,31 @@ public final class DeviceUtils {
         Bitmap ret = Bitmap.createBitmap(bmp, 0, 0, dm.widthPixels, dm.heightPixels);
         view.destroyDrawingCache();
         return ret;
+    }
+
+
+    /**
+     * get max runtime memory
+     *
+     * @return max runtime memory
+     */
+    public static long getMaxMemory() {
+        return Runtime.getRuntime().maxMemory() / 1024;
+    }
+
+    /**
+     * 获取设备的可用内存大小
+     *
+     * @param context 应用上下文对象context
+     * @return 当前内存大小
+     */
+    public static int getDeviceUsableMemory(Context context) {
+        ActivityManager am = (ActivityManager) context.getSystemService(
+                Context.ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
+        am.getMemoryInfo(mi);
+        // 返回当前系统的可用内存
+        return (int) (mi.availMem / (1024 * 1024));
     }
 
 }

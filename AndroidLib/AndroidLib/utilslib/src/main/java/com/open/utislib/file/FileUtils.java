@@ -2,6 +2,8 @@ package com.open.utislib.file;
 
 import android.annotation.SuppressLint;
 
+import com.open.utislib.base.MemoryConstants;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
