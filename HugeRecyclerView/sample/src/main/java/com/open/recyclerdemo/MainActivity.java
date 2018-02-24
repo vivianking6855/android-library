@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.swipe:
                 startActivity(SwipeRefreshActivity.class);
                 break;
+            case R.id.pull_refresh:
+                startActivity(PullRefreshActivity.class);
+                break;
             default:
                 break;
         }

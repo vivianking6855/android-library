@@ -16,14 +16,7 @@ Maven
       <type>pom</type>
     </dependency>
     
-控件引用
-
-    <com.open.hugerecyclerview.HugeRecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    
+ 
 # Feature List
 
 - Header,Footer （可以直接搭配系统的RecyclerView使用）

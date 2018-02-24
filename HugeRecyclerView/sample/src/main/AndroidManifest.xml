@@ -20,7 +20,8 @@
         <activity android:name=".HeaderFooterActivity" />
         <activity android:name=".EndlessActivity" />
         <activity android:name=".SwipeRefreshActivity" />
-        <activity android:name=".EndlessCustormerActivity"></activity>
+        <activity android:name=".EndlessCustormerActivity" />
+        <activity android:name=".PullRefreshActivity"></activity>
     </application>
 
 </manifest>
