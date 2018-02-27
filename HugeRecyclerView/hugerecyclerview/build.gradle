@@ -6,14 +6,14 @@ publish {
     userOrg = 'vivianwayne1985'//organization，初次注册需要到bintray.com创建一个
     groupId = 'com.open'//jcenter上的路径
     artifactId = 'hugerecyclerview'//项目名称
-    publishVersion = '1.0.2'//版本号
+    publishVersion = '1.0.180227'//版本号
     desc = 'this is a huge recyclerview android'//描述，不重要
     website = 'http://vivianking6855.github.io'//网站，最好有，不重要
 }
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         minSdkVersion 19
