@@ -1,15 +1,17 @@
 # use it like
 
+JCenter发布地址：[utilslib](https://bintray.com/vivianwayne1985/maven/utilslib)
+
 ## Gradle
 
-    compile 'com.open.library:utilslib:1.0.171019'
+    compile 'com.open.library:utilslib:1.0.180322'
 
 ## Maven
 
     <dependency>
       <groupId>com.open.library</groupId>
       <artifactId>utilslib</artifactId>
-      <version>1.0.171019</version>
+      <version>1.0.180322</version>
       <type>pom</type>
     </dependency>
 
