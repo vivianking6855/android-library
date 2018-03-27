@@ -32,7 +32,7 @@ public final class PathUtils {
 
     /**
      * Gets disk cache directory path.
-     * it will return internal cache path or external cache path if sdcard exist and not removed
+     * it will return internal cache path or external cache path if sdcard exist or not removed
      * <p> path like this:
      * external sdcard cache path : /storage/emulated/0/Android/data/package name/cache/
      * internal cache path : /sdcard/Android/data/package name/cache/

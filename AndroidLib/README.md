@@ -17,25 +17,48 @@ AndroidLib 总结了项目中常用的库，实现Code更便捷的重用，优�
 
 使用方法说明，点击[这里](https://github.com/vivianking6855/android-library/tree/master/AndroidLib/AndroidLib)
 
+## base
+
 - AppUtils: App常用方法，比如app version等
 - ConvertUtils: bitmap, byte[], stream，时间格式 等转换
 - SizeUtils： 尺寸转换，比如px, sp等
-- DeviceUtils：设备尺寸，设备截屏等
+- MemoryConstants： KB,MB等常量
+
+## cache
+
 - DiskLruCacheUtils： DiskLruCache 方法封装，支持bitmap, drawable, json等
-- TimeUtils，TimeConstants：时间，日期，时间差等
-- ToastUtils： 不会重复的toast
+
+
+## device
+
+- DeviceUtils：设备尺寸，设备截屏等
+- CPUSample： cpu and process stat 采集库
+
+## file
+
+- CleanUtils： 文件夹clean等
+- CloseUtils： safe close 等
+- FileUtils： 文件操作
+- PathUtils： 获取cache路径
+- SDCardUtils： SD卡路径，空间，信息等
+- ZipUtils： 压缩，解压文件
+
+## network
+
+- NetworkUtils： 网络状态，打开网络设定等
+
+# security
+
 - EncryptUtils： 加解密
 - EncodeUtils： 编码
-- PathUtils： 获取cache路径
-- FileUtils： 文件操作
-- CleanUtils： 文件夹clean等
-- NetworkUtils： 网络状态，打开网络设定等
-- ZipUtils： 压缩，解压文件
-- SDCardUtils： SD卡路径，空间，信息等
-- MemoryConstants： KB,MB等常量
-- CloseUtils： safe close 等
 
+# time
 
+- TimeUtils，TimeConstants：时间，日期，时间差等
+
+# window
+
+- ToastUtils： 不会重复的toast
 
 # Reference
 
