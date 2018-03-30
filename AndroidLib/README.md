@@ -10,7 +10,11 @@ AndroidLib 总结了项目中常用的库，实现Code更便捷的重用，优�
 
 主要包含两部分：
 
-1. appbase，主要是app常用的一些基类。使用的时候视情况copy过去即可（BaseActiviy, BaseView等）
+1. appbase，主要是app常用的一些基类。使用的时候视情况copy过去即可
+    - BaseActiviy
+    - BaseView
+    - BaseMVPActivity
+    - BasePresenter
 2. utilslib，主要是常用的一些方法库
 
 # utilslib使用方法 (Android Studio)
