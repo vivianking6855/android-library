@@ -1,7 +1,9 @@
-package com.open.applib.activity;
+package com.open.applib.activity.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
+import com.open.applib.activity.presenter.BasePresenter;
 
 /**
  * The type Base mvp activity.

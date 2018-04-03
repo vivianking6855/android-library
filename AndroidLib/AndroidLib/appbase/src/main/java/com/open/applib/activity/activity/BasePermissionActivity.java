@@ -1,4 +1,4 @@
-package com.open.applib.activity;
+package com.open.applib.activity.activity;
 
 import android.Manifest;
 import android.content.DialogInterface;

@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  * format like this:
  * cpu:7% app:0% [user:0% system:7% ioWait:0% ]
  */
-public class CPUSample {
+public final class CPUSample {
     private static final String TAG = "CPUSample";
 
     // cpu file

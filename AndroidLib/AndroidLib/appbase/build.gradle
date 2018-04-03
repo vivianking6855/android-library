@@ -1,4 +1,15 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release' // publish tool
+
+// publish
+publish {
+    userOrg = 'vivianwayne1985'//organization，初次注册需要到bintray.com创建一个
+    groupId = 'com.open.appbase'//jcenter上的路径
+    artifactId = 'AppBase'//项目名称
+    publishVersion = '1.0.180402'//版本号
+    desc = 'this is app basic library for android'//描述，不重要
+    website = 'http://vivianking6855.github.io'//网站，最好有，不重要
+}
 
 android {
     compileSdkVersion 25
@@ -9,8 +20,8 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,6 +31,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:25.3.1'
 }

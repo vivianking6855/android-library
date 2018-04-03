@@ -1,18 +1,19 @@
-package com.open.applib.activity;
+package com.open.applib.activity.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+
 /**
  * Created by vivian on 2017/6/20.
  */
 
 public abstract class BaseView extends View {
-    private final static String TAG = BaseView.class.getSimpleName();
-
-    protected Context mContext;
+    protected Reference<Context> mContext;
 
     // half size of view, may used for canvas.translate(halfWidth, halfHeight);
     protected int halfWidth;
@@ -29,7 +30,7 @@ public abstract class BaseView extends View {
     public BaseView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        mContext = context;
+        mContext = new WeakReference<>(context);
         setAttrs(attrs);
         initData();
     }
@@ -48,22 +49,21 @@ public abstract class BaseView extends View {
      * Log.w(TAG, "setAttrs ex", ex);
      * }
      *
-     * @param attrs
+     * @param attrs view attrs
      */
     protected abstract void setAttrs(AttributeSet attrs);
 
     /**
      * Init paints, etc.
      * use it like
-     *
-     * @Override protected void initView() {
-     * arcPaint = new Paint();
-     * arcPaint.setAntiAlias(true); // 消除锯齿
-     * arcPaint.setStrokeWidth(strokeWidth);
-     * arcPaint.setStrokeCap(Paint.Cap.ROUND); // 设置圆头
-     * arcPaint.setAntiAlias(true); // 消除锯齿
-     * arcPaint.setStyle(Paint.Style.STROKE); // 设置空心
-     * }
+     * protected void initView() {
+             arcPaint = new Paint();
+             arcPaint.setAntiAlias(true); // 消除锯齿
+             arcPaint.setStrokeWidth(strokeWidth);
+             arcPaint.setStrokeCap(Paint.Cap.ROUND); // 设置圆头
+             arcPaint.setAntiAlias(true); // 消除锯齿
+             arcPaint.setStyle(Paint.Style.STROKE); // 设置空心
+         }
      */
     protected abstract void initData();
 
@@ -80,11 +80,10 @@ public abstract class BaseView extends View {
     /**
      * Init size in onLayout.
      * use it like
-     *
-     * @Override protected void initSize() {
-     * radius = Math.min(halfWidth, halfHeight) - strokeWidth;// 获得外圆的半径
-     * arcRect = new RectF(-radius, -radius, radius, radius);
-     * }
+     *  protected void initSize() {
+             radius = Math.min(halfWidth, halfHeight) - strokeWidth;// 获得外圆的半径
+             arcRect = new RectF(-radius, -radius, radius, radius);
+         }
      */
     protected abstract void initSize();
 

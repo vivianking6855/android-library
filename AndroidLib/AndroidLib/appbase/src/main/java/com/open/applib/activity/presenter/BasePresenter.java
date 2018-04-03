@@ -1,4 +1,4 @@
-package com.open.applib.activity;
+package com.open.applib.activity.presenter;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
