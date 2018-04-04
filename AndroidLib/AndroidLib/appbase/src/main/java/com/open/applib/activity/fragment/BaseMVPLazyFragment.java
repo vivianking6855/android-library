@@ -1,4 +1,4 @@
-package com.open.applib.activity.activity;
+package com.open.applib.activity.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,34 +6,26 @@ import android.support.annotation.Nullable;
 import com.open.applib.activity.presenter.BasePresenter;
 
 /**
- * The type Base mvp activity.
- * you need implement createPresenter to create Presenter
- * which must extends {@link BasePresenter}
- * or you can Override onCreate to customized your attachReference
+ * Created on 2018/2/28.
+ * lazy fragment: only load data if user visible fragment and data not load complete
+ * you must setDataLoadCompleted(true), when your data load complete, otherwise it will load every time
  *
  * @param <V> the type parameter
  * @param <T> the type parameter
  */
-public abstract class BaseMVPActivity<V, T extends BasePresenter<V>> extends BaseActivity {
+public abstract class BaseMVPLazyFragment<V, T extends BasePresenter<V>> extends BaseLazyFragment {
     /**
-     * The presenter P in MPV
+     * The presenter P in MVP
      */
     protected T mPresenter;
 
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         // create presenter
         mPresenter = createPresenter();
         mPresenter.attachReference((V) this);
 
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mPresenter.detachReference();
     }
 
     /**
@@ -42,4 +34,5 @@ public abstract class BaseMVPActivity<V, T extends BasePresenter<V>> extends Bas
      * @return the t
      */
     protected abstract T createPresenter();
+
 }

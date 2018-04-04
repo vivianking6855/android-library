@@ -2,24 +2,34 @@
 
 AndroidLib 总结了项目中常用的库，实现Code更便捷的重用，优化项目结构，加速项目开发。
 
-- 丰富的功能库
-- 大量的测试用例
+- 丰富的功能库和组件
 - 完整说明文档
 - 实时更新
 
 
-主要包含两部分：
+主要包含两部分：appbase和utilslib
 
-1. appbase，主要是app常用的一些基类。使用的时候视情况copy过去即可
-    - BaseActiviy
-    - BaseView
-    - BaseMVPActivity
-    - BasePresenter
-2. utilslib，主要是常用的一些方法库
+# 1. appbase
 
-# utilslib使用方法 (Android Studio)
+主要是app常用的一些基类。copy到项目中即可使用
 
-使用方法说明，点击[这里](https://github.com/vivianking6855/android-library/tree/master/AndroidLib/AndroidLib)
+    - activity
+        - BaseActiviy：基类，包含initData,initView,loadData逻辑控制
+        - BaseMVPActivity ： 加入Presenter持有和释放逻辑
+        - BasePermissionActivity : 加入runtime Permission逻辑 
+    - fragment
+        - BaseLazyFragment：支持懒加载
+        - BaseMVPLazyFragment：加入Presenter的持有和释放
+    - helper
+        - BaseUIRouter ：加入隐式action安全监测
+    - view
+        - BaseView: 加入onLayout中获取size和初始化paint等
+    - presenter
+        - BasePresenter：加入presenter的释放
+
+# 2. utilslib
+
+主要是常用的一些方法库
 
 ## base
 
@@ -64,8 +74,13 @@ AndroidLib 总结了项目中常用的库，实现Code更便捷的重用，优�
 
 - ToastUtils： 不会重复的toast
 
+## 使用方法 (Android Studio)
+
+使用方法说明，点击[这里](https://github.com/vivianking6855/android-library/tree/master/AndroidLib/AndroidLib)
+
 # Reference
 
 - [Lazy](https://github.com/l123456789jy/Lazy)
 - [base-diskcache](https://github.com/hongyangAndroid/base-diskcache)
+- [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode)
 
