@@ -13,19 +13,19 @@ AndroidLib 总结了项目中常用的库，实现Code更便捷的重用，优�
 
 主要是app常用的一些基类。copy到项目中即可使用
 
-    - activity
-        - BaseActiviy：基类，包含initData,initView,loadData逻辑控制
-        - BaseMVPActivity ： 加入Presenter持有和释放逻辑
-        - BasePermissionActivity : 加入runtime Permission逻辑 
-    - fragment
-        - BaseLazyFragment：支持懒加载
-        - BaseMVPLazyFragment：加入Presenter的持有和释放
-    - helper
-        - BaseUIRouter ：加入隐式action安全监测
-    - view
-        - BaseView: 加入onLayout中获取size和初始化paint等
-    - presenter
-        - BasePresenter：加入presenter的释放
+   - activity
+       - BaseActiviy：基类，包含initData,initView,loadData逻辑控制
+       - BaseMVPActivity ： 加入Presenter持有和释放逻辑
+       - BasePermissionActivity : 加入runtime Permission逻辑 
+   - fragment
+       - BaseLazyFragment：支持懒加载
+       - BaseMVPLazyFragment：加入Presenter的持有和释放
+   - helper
+       - BaseUIRouter ：加入隐式action安全监测
+   - view
+       - BaseView: 加入onLayout中获取size和初始化paint等
+   - presenter
+       - BasePresenter：加入presenter的释放
 
 # 2. utilslib
 
@@ -38,10 +38,13 @@ AndroidLib 总结了项目中常用的库，实现Code更便捷的重用，优�
 - SizeUtils： 尺寸转换，比如px, sp等
 - MemoryConstants： KB,MB等常量
 
+## Bitmap
+
+- BitmapRecycleUtils：安全recycle Bitmap库
+
 ## cache
 
 - DiskLruCacheUtils： DiskLruCache 方法封装，支持bitmap, drawable, json等
-
 
 ## device
 
@@ -74,9 +77,14 @@ AndroidLib 总结了项目中常用的库，实现Code更便捷的重用，优�
 
 - ToastUtils： 不会重复的toast
 
-## 使用方法 (Android Studio)
+# 3. 使用方法 (Android Studio)
 
 使用方法说明，点击[这里](https://github.com/vivianking6855/android-library/tree/master/AndroidLib/AndroidLib)
+
+# 4. 混淆
+
+ -keep class com.open.utislib.** { *; }
+ -keep class com.open.utislib.** { *; }
 
 # Reference
 
