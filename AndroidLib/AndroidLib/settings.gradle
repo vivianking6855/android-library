@@ -1,1 +1,1 @@
-include ':appbase', ':utilslib', ':thirdparty'
+include ':appbase', ':utils', ':thirdparty'

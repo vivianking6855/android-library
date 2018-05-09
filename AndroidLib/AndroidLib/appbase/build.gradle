@@ -3,7 +3,7 @@ apply plugin: 'com.novoda.bintray-release' // publish tool
 
 // publish
 publish {
-    userOrg = 'vivianwayne1985'//organization，初次注册需要到bintray.com创建一个
+    userOrg = 'viviankingdou'//organization，初次注册需要到bintray.com创建一个
     groupId = 'com.open.appbase'//jcenter上的路径
     artifactId = 'AppBase'//项目名称
     publishVersion = '1.0.180509'//版本号
