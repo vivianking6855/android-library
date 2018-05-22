@@ -1,7 +1,9 @@
-# Jcenter的库发布library
+# Module library
 
-发布到Jcenter上的类库
+公司内部常用的组件或模块
 
-# 1. [AndroidLib： android常用方法和基类库](https://github.com/vivianking6855/android-library/tree/master/AndroidLib)
+# 1. [HugeRecyclerView： 超级RecycleView](http://vivianking6855.github.io/2017/09/29/RecyclerView-Advance-1/)
 
-# 2. [HugeRecyclerView： 超级RecycleView](http://vivianking6855.github.io/2017/09/29/RecyclerView-Advance-1/)
+# 2. ThirdParty：三方库封装
+
+# 3. AndroidAsusModule: Asus内部模块整理
